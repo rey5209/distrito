@@ -64,8 +64,8 @@ $(document).ready(function () {
   var lokal_page_id = urlParams.pageId[0]
   var link = '';
 
-  console.log(lokal_name)
-  console.log(lokal_page_id)
+  // console.log(lokal_name)
+  // console.log(lokal_page_id)
 
   document.title = lokal_name;
 
@@ -80,7 +80,7 @@ $(document).ready(function () {
       return response.json();
     })
     .then(function (data) {
-      console.log(data)
+      // console.log(data)
 
       different_link = data.jsonData[lokal_page_id - 1].different_link_per_data;
       different_img = data.jsonData[lokal_page_id - 1].different_img_per_data;
@@ -106,7 +106,7 @@ $(document).ready(function () {
 
 
       function setViews(item, index) {
-        console.log(local,item.lokal.toUpperCase())
+        // console.log(local,item.lokal.toUpperCase())
 
         if (local === item.lokal.toUpperCase()) {
           // console.log('pasok')
@@ -137,7 +137,7 @@ $(document).ready(function () {
       }// ./.
 
     }).catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 
 
@@ -169,7 +169,7 @@ $(document).ready(function () {
     sec = parseInt(array_duration[1]) + (parseInt(array_duration[0]) * 60);
     sec = sec * 1000;
 
-    console.log(array_duration)
+    // console.log(array_duration)
 
     loadingFunction(sec);
 
@@ -182,8 +182,8 @@ $(document).ready(function () {
 
     setTimeout(function () {
       //temp disable 
-      console.log('updating views')
-      console.log('done')
+      // console.log('updating views')
+      // console.log('done')
       SelectData(); // post - firebase 
       // updateLocalView()
       $('.load-end').html(`
@@ -292,7 +292,7 @@ $(document).ready(function () {
   function updateLocalView(){
 
     let localInsert = checkValidArg(arrNonValidPath, local)
-    console.log(localInsert)
+    // console.log(localInsert)
     const que = query(ref(db, BASE_PATH+"viewTotal/" + localInsert));
         // const que = query(ref(db, path));
     
@@ -394,8 +394,8 @@ $(document).ready(function () {
   // INSERT DATA FUNCTION
 
   function InsertData(localName, countval, path) {
-    console.log(path)
-    console.log('localname: ' + localName + ' count: ' + countval)
+    // console.log(path)
+    // console.log('localname: ' + localName + ' count: ' + countval)
 
     set(ref(db, path), {
       name: localName,
@@ -424,7 +424,7 @@ $(document).ready(function () {
     })
       .then(() => {
         // alert("Data updated successfully")
-        console.log("updated success")
+        // console.log("updated success")
       })
       .catch((error) => {
         alert("Unssuccessful, error " + error)
@@ -435,7 +435,7 @@ $(document).ready(function () {
 
   function checkValidArg(arrNonValidPath, arrVal) {
 
-    console.log(arrVal)
+    // console.log(arrVal)
 
     var result = arrNonValidPath.filter(x => arrVal.includes(x.type));
     if (result.length > 0) {

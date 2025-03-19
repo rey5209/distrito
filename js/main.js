@@ -255,17 +255,17 @@ $(document).ready(function () {
           updatePaging(current_page, max_page, page_main_tittles, page_sub_tittles)
 
         }).catch(function (error) {
-          console.log(error);
+          // console.log(error);
         });
 
 
 
     }).catch(function (error) {
-      console.log(error);
+      // console.log(error);
     });
 
   function updatePaging(current_page, max_page, page_main_tittles, page_sub_tittles) {
-    console.log(page_sub_tittles[0])
+    // console.log(page_sub_tittles[0])
     $('.table-paging').hide()
     $('.top_pages_table').hide()
 
@@ -426,43 +426,39 @@ $(document).ready(function () {
       snapshot.forEach((childSnapshot) => {
         responseData.push(childSnapshot.val());
       });
+ 
 
-
-       
-      
-
-      responseData.forEach( async(subData,index)=>{ 
-        var dataSource = "";
-        var countFromOtherSource = 0 
-        var tempName =   checkValidArg(arrNonValidPath, subData.name)
-        //check all stored datas of lokals that contains link
-        metaData?.link?.forEach( (item) =>{ 
-          if(item.name.toUpperCase() === tempName){  
-            dataSource = item.source
-          } 
-        })
+      // responseData.forEach( async(subData,index)=>{ 
+      //   var dataSource = "";
+      //   var countFromOtherSource = 0 
+      //   var tempName =   checkValidArg(arrNonValidPath, subData.name)
+      //   //check all stored datas of lokals that contains link
+      //   metaData?.link?.forEach( (item) =>{ 
+      //     if(item.name.toUpperCase() === tempName){  
+      //       dataSource = item.source
+      //     } 
+      //   })
          
-        if( dataSource !== ""){
-          const reference = ref(db, dataSource);
-           await get(reference).then((snapshot) => {
+      //   if( dataSource !== ""){
+      //     const reference = ref(db, dataSource);
+      //      await get(reference).then((snapshot) => {
             
-            snapshot.forEach((childSnapshot) => {  
-              // console.log(childSnapshot.val() )
-              countFromOtherSource += parseInt( childSnapshot.val().count)
-              console.log(countFromOtherSource)
-            });  
-          }, (error) => {
-              console.error(error); 
-          }); 
+      //       snapshot.forEach((childSnapshot) => {  
+      //         // console.log(childSnapshot.val() )
+      //         countFromOtherSource += parseInt( childSnapshot.val().count)
+      //         console.log(countFromOtherSource)
+      //       });  
+      //     }, (error) => {
+      //         console.error(error); 
+      //     }); 
 
-          console.log('final source',countFromOtherSource)
-          responseData[index].count = countFromOtherSource
-        }
+      //     // console.log('final source',countFromOtherSource)
+      //     responseData[index].count = countFromOtherSource
+      //   }
 
 
-      })
-
-      console.log(responseData)
+      // })
+ 
 
 
       // console.log(responseData, id, table)
@@ -509,7 +505,7 @@ $(document).ready(function () {
         });
 
         arrTops = arrTops.slice(0, number_tops);
-        console.log(arrTops)
+        // console.log(arrTops)
 
         AddAllItemsToTable(arrTops, id, table, metaData, customFunction, isRegular);
       }
