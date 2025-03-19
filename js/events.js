@@ -4,7 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { arr, firebaseConfig } from "./constant.js";
+import { arr, firebaseConfig, BASE_PATH } from "./constant.js";
 
 
 // Initialize Firebase
@@ -187,7 +187,7 @@ $(document).ready(function () {
       SelectData(); // post - firebase 
       // updateLocalView()
       $('.load-end').html(`
-        "Please contact your KDO Officer if you encounter an error, so our Data Engineer can arrange to fix it."<br><br>
+        "Your views have been updated with our powerful Azure OpenAI models."<br><br>
         "Refresh the page to rewatch."
     `);
       $.LoadingOverlay("hide", true); //remmove the loading overlay
@@ -293,7 +293,7 @@ $(document).ready(function () {
 
     let localInsert = checkValidArg(arrNonValidPath, local)
     console.log(localInsert)
-    const que = query(ref(db, "viewTotal/" + localInsert));
+    const que = query(ref(db, BASE_PATH+"viewTotal/" + localInsert));
         // const que = query(ref(db, path));
     
     onValue(que, (snapshot) => {
@@ -302,7 +302,7 @@ $(document).ready(function () {
         responseData.push(childSnapshot.val());
       }); 
       // console.log("ViewsCount/" + date + "/" + local)
-      console.log(responseData)
+      // console.log(responseData)
       $('.lokal_view').text(Math.round(responseData[0] ?? 0)) 
     }) 
   }
@@ -315,12 +315,13 @@ $(document).ready(function () {
     let localInsert = checkValidArg(arrNonValidPath, local)
 
 
+    // console.log( BASE_PATH+"ViewsCount/" + date + "/" + localInsert)
     // for daily counts
-    get(child(dbref, "ViewsCount/" + date + "/" + localInsert)).then((snapshot) => {
+    get(child(dbref, BASE_PATH+"ViewsCount/" + date + "/" + localInsert)).then((snapshot) => {
       if (snapshot.exists()) {
         // alert(snapshot.val().count)
 
-        UpdateData(snapshot.val().count, localInsert, "ViewsCount/" + date + "/" + localInsert)
+        UpdateData(snapshot.val().count, localInsert, BASE_PATH+"ViewsCount/" + date + "/" + localInsert)
       } else {
         // alert("No Data Found") 
         checkDayData()
@@ -330,19 +331,19 @@ $(document).ready(function () {
     })
 
     // for Totals
-    get(child(dbref, "viewTotal/" + localInsert)).then((snapshot) => {
+    get(child(dbref, BASE_PATH+"viewTotal/" + localInsert)).then((snapshot) => {
       if (snapshot.exists()) {
         // alert(snapshot.val().count)
 
-        UpdateData(snapshot.val().count, localInsert, "viewTotal/" + localInsert)
+        UpdateData(snapshot.val().count, localInsert, BASE_PATH+"viewTotal/" + localInsert)
       } else {
         // alert("No Data Found")  
-        // arr.forEach((arrVal) => {
-        //   // console.log(arrVal) 
-        //   var arrVal = checkValidArg(arrNonValidPath, arrVal)
-        //   InsertData(arrVal, 0, "viewTotal/" + arrVal)
-        //   // console.log(arrVal);
-        // })
+        arr.forEach((arrVal) => {
+          // console.log(arrVal) 
+          var arrVal = checkValidArg(arrNonValidPath, arrVal.toUpperCase())
+          InsertData(arrVal, 0, BASE_PATH+"viewTotal/" + arrVal)
+          // console.log(arrVal);
+        })
       }
     }).catch((error) => {
       alert("Unssuccessful, error " + error)
@@ -355,12 +356,12 @@ $(document).ready(function () {
     const dbref = ref(db);
 
 
-    get(child(dbref, "ViewsCount/" + date)).then((snapshot) => {
+    get(child(dbref, BASE_PATH+"ViewsCount/" + date)).then((snapshot) => {
       if (snapshot.exists()) {
         // if its not a new day but local is not found 
 
-        let localInsert = checkValidArg(arrNonValidPath, local)
-        InsertData(localInsert, 1, "ViewsCount/" + date + "/" + local)
+        let localInsert = checkValidArg(arrNonValidPath, local.toUpperCase()) 
+        InsertData(localInsert, 1, BASE_PATH+"ViewsCount/" + date + "/" + localInsert)
 
 
       } else {
@@ -383,7 +384,7 @@ $(document).ready(function () {
       // console.log(arrVal) 
       var arrVal = checkValidArg(arrNonValidPath, arrVal) 
       // InsertData(arrVal, 0)  
-      InsertData(arrVal, 0, "ViewsCount/" + date + "/" + arrVal)
+      InsertData(arrVal, 0, BASE_PATH+"ViewsCount/" + date + "/" + arrVal)
       // console.log(arrVal);
     })
 
@@ -393,6 +394,7 @@ $(document).ready(function () {
   // INSERT DATA FUNCTION
 
   function InsertData(localName, countval, path) {
+    console.log(path)
     console.log('localname: ' + localName + ' count: ' + countval)
 
     set(ref(db, path), {
@@ -422,6 +424,7 @@ $(document).ready(function () {
     })
       .then(() => {
         // alert("Data updated successfully")
+        console.log("updated success")
       })
       .catch((error) => {
         alert("Unssuccessful, error " + error)
@@ -431,6 +434,8 @@ $(document).ready(function () {
   // window.onload = SelectData;
 
   function checkValidArg(arrNonValidPath, arrVal) {
+
+    console.log(arrVal)
 
     var result = arrNonValidPath.filter(x => arrVal.includes(x.type));
     if (result.length > 0) {

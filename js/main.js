@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
-import { arr, firebaseConfig } from "./constant.js";
+import { arr, firebaseConfig, BASE_PATH } from "./constant.js"; 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -119,7 +119,7 @@ $(document).ready(function () {
             <thead>
               <tr > 
                 <th  class="lokals-item d-flex justify-content-between align-items-center"> 
-                  <div class="p-2 bd-highlight  ">Lokal</div> 
+                  <div class="p-2 bd-highlight  ">Distrito</div> 
                   <div class="p-2 bd-highlight   ">Views</div>
                 </th> 
               </tr>
@@ -132,6 +132,12 @@ $(document).ready(function () {
 
             var page = item.page;
             var redirectPage = item.redirectPage;
+            var links = []
+            item.viewData.map((subItem, index) => {
+              if(subItem.link != "")
+                links.push({ name: subItem.lokal, link:subItem.link, source: subItem?.dataSource } ) 
+            })
+ 
             // item.viewData.forEach(setLokals);
             // function setLokals(item, index) {
             //   total += item.views; 
@@ -150,7 +156,7 @@ $(document).ready(function () {
             // }
 
             if (item?.viewDataType === 'firebase') {
-              GetAllDataRealtime("tbody" + count_page, "maintable" + count_page, { redirectPage: redirectPage, count_page: count_page, page: page }, "viewTotal", true);
+              GetAllDataRealtime("tbody" + count_page, "maintable" + count_page, {link: links, redirectPage: redirectPage, count_page: count_page, page: page }, `${BASE_PATH}viewTotal`, true);
 
             } else {
               const appendedLokals = item.viewData.map((item, index) => {
@@ -158,7 +164,7 @@ $(document).ready(function () {
                 return `
             <tr> 
                 <td > 
-                    <a href="${(redirectPage == true ? page + '?pageId=' + count_page + '&lokal=' + item.lokal : '#')}" class="lokals-item d-flex justify-content-between align-items-center" id="lokal_${item.lokal}">
+                    <a href="${(redirectPage == true ? (item.link != "" ? item.link : page + '?pageId=' + count_page + '&lokal=' + item.lokal) : '#')}" class="lokals-item d-flex justify-content-between align-items-center" id="lokal_${item.lokal}">
                       <div class="p-2 link-dark post-title">${item.lokal}</div> 
                       <div class="p-2 link-dark view-counter ${item.lokal}_view">${Math.round(item.views)}</div>
                     </a>
@@ -203,7 +209,7 @@ $(document).ready(function () {
                 <thead>
                   <tr > 
                     <th  class="lokals-item d-flex justify-content-between align-items-center"> 
-                      <div class="p-2 bd-highlight  ">Top ${number_tops} Lokal </div> 
+                      <div class="p-2 bd-highlight  ">Top ${number_tops} Distrito </div> 
                       <div class="p-2 bd-highlight   ">Views</div>
                     </th> 
                   </tr>
@@ -215,7 +221,7 @@ $(document).ready(function () {
 
 
               if (item?.viewDataType === 'firebase') {
-                GetAllDataRealtime("tbodyTable" + count_page, "totaltable" + count_page, { redirectPage: false, count_page: count_page, page: '#' }, "viewTotal", false);
+                GetAllDataRealtime("tbodyTable" + count_page, "totaltable" + count_page, { link: links, redirectPage: false, count_page: count_page, page: '#' }, `${BASE_PATH}viewTotal`, false);
 
               } else {
 
@@ -240,19 +246,12 @@ $(document).ready(function () {
                   </tr>  
                 `)
                 });
-              }
-
-
-
+              } 
             }
-
-
-
+ 
             count_page++;
           }
-
-
-
+ 
           updatePaging(current_page, max_page, page_main_tittles, page_sub_tittles)
 
         }).catch(function (error) {
@@ -295,16 +294,63 @@ $(document).ready(function () {
 
 
   // Filling The Table
-  function AddItemToTable(name, count, element, metaData) {
+  async function AddItemToTable(name, count, element, metaData, isRegular) {
     stdNo++;
 
+    var oldName = name
     name = checkValidArg(arrNonValidPath, name)
+    // console.log(name)
 
+    var redirectLink ="";
+    var dataSource = "";
+    var countFromOtherSource = 0
+    
 
+    //check all stored datas of lokals that contains link
+    metaData?.link?.forEach( (item) =>{  
+      if(item.name.toUpperCase() === name){ 
+        redirectLink = item.link
+        dataSource = item.source
+      } 
+    })
+
+    // if current lokal has different data source
+    // if(redirectLink !== "" && dataSource !== ""){
+      // const reference = ref(db, dataSource);
+      //  await get(reference).then((snapshot) => {
+        
+      //   snapshot.forEach((childSnapshot) => {  
+      //     console.log(childSnapshot.val() )
+      //     countFromOtherSource += parseInt( childSnapshot.val().count)
+      //     console.log(countFromOtherSource)
+      //   });  
+      // }, (error) => {
+      //     console.error(error); 
+      // });
+
+      // const que = query(ref(db, dataSource)); 
+
+      //  get(que).((snapshot) => {
+  
+      //   snapshot.forEach((childSnapshot) => {  
+      //     console.log(childSnapshot.val() )
+      //     countFromOtherSource += parseInt( childSnapshot.val().count)
+      //     // console.log(countFromOtherSource)
+      //   });  
+
+      //   $("body").find(`lokal_${(isRegular ?oldName : "totals_"+oldName)}`).find('.view-counter').text(countFromOtherSource)
+      //   // console.log($("body").find(`#lokal_${oldName}`).find('.view-counter') )
+      // })
+
+      // console.log('count final', countFromOtherSource)
+    // }
+    
+ 
+ 
     $("#" + element).append(`
             <tr> 
                 <td > 
-                    <a href="${(metaData?.redirectPage == true ? metaData?.page + '?pageId=' + metaData?.count_page + '&lokal=' + name : '#')}" class="lokals-item d-flex justify-content-between align-items-center" id="lokal_${name}">
+                    <a href="${(metaData?.redirectPage == true ?( redirectLink !=="" ?  redirectLink : metaData?.page + '?pageId=' + metaData?.count_page + '&lokal=' + name) : '#')}" class="lokals-item d-flex justify-content-between align-items-center" id="lokal_${(isRegular ?oldName : "totals_"+oldName)}">
                       <div class="p-2 link-dark post-title">${name}</div> 
                       <div class="p-2 link-dark view-counter ${name}_view">${Math.round(count)}</div>
                     </a>
@@ -314,7 +360,7 @@ $(document).ready(function () {
     )
   }
 
-  function AddAllItemsToTable(dataSelect, id, table, metaData, customFunction) {
+  function AddAllItemsToTable(dataSelect, id, table, metaData, customFunction, isRegular) {
     // if ($.fn.DataTable.isDataTable("#" + table)) {
     //   $("#" + table)
     //     .DataTable()
@@ -328,16 +374,16 @@ $(document).ready(function () {
 
     dataSelect.forEach((element) => {
       total += element.count;
-      AddItemToTable(element.name, element.count, id, metaData);
+      AddItemToTable(element.name, element.count, id, metaData, isRegular);
     });
 
 
     if (dataSelect?.length > 0) {
 
     } else {
-      console.log(arr, 'wala laman!')
+      // console.log(arr, 'wala laman!')
       arr.forEach((item) => {
-        AddItemToTable(item, 0, id, metaData);
+        AddItemToTable(item, 0, id, metaData, isRegular);
       })
     }
 
@@ -364,7 +410,7 @@ $(document).ready(function () {
         students.push(childSnapshot.val());
       });
 
-      AddAllItemsToTable(students, id, table);
+      AddAllItemsToTable(students, id, table, false);
     });
   }
 
@@ -382,7 +428,44 @@ $(document).ready(function () {
       });
 
 
-      console.log(responseData, id, table)
+       
+      
+
+      responseData.forEach( async(subData,index)=>{ 
+        var dataSource = "";
+        var countFromOtherSource = 0 
+        var tempName =   checkValidArg(arrNonValidPath, subData.name)
+        //check all stored datas of lokals that contains link
+        metaData?.link?.forEach( (item) =>{ 
+          if(item.name.toUpperCase() === tempName){  
+            dataSource = item.source
+          } 
+        })
+         
+        if( dataSource !== ""){
+          const reference = ref(db, dataSource);
+           await get(reference).then((snapshot) => {
+            
+            snapshot.forEach((childSnapshot) => {  
+              // console.log(childSnapshot.val() )
+              countFromOtherSource += parseInt( childSnapshot.val().count)
+              console.log(countFromOtherSource)
+            });  
+          }, (error) => {
+              console.error(error); 
+          }); 
+
+          console.log('final source',countFromOtherSource)
+          responseData[index].count = countFromOtherSource
+        }
+
+
+      })
+
+      console.log(responseData)
+
+
+      // console.log(responseData, id, table)
       if (isRegular) {
 
         const customFunction = (meta) => {
@@ -412,7 +495,9 @@ $(document).ready(function () {
             `)
         }
 
-        AddAllItemsToTable(responseData, id, table, metaData, customFunction);
+ 
+
+        AddAllItemsToTable(responseData, id, table, metaData, customFunction, isRegular);
       }
       else {
 
@@ -426,7 +511,7 @@ $(document).ready(function () {
         arrTops = arrTops.slice(0, number_tops);
         console.log(arrTops)
 
-        AddAllItemsToTable(arrTops, id, table, metaData, customFunction);
+        AddAllItemsToTable(arrTops, id, table, metaData, customFunction, isRegular);
       }
 
     });
@@ -462,6 +547,8 @@ $(document).ready(function () {
     return word;
 
   }
+
+   
 
 })
 

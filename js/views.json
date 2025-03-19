@@ -1,86 +1,32 @@
 {
   "jsonData" : [
     {
-    "tittle" : "Flavors of the North ┃ Lingayen Pangasinan ┃ March 8-14, 2025 ",
+    "tittle" : "Flavors of the North ┃ Ilocos Region & CAR ┃ March 19 - 22, 2025 ",
     "subTittle" : "Facebook",
     "image" : "22.jpg",
     "link" : "https://www.youtube.com/live/jtEDIpA3UyA?si=3fFknnWRZLRWi8GY&t=1",
     "allowEdit": false,
     "redirectPage": true,
-    "page" : "watch",
+    "page" : "watch.html",
     "redirect_text":"Sending View From Youtube",
     "different_link_per_data" : false,
     "different_img_per_data" : false,
     "viewDataType": "firebase",
     "viewData" : [
-      {"lokal":"Aguilar",            "duration":"30:0",   "link":"", "image":"22.jpg",       "views": 2                     },
-      {"lokal":"Alitaya",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 3                },
-      {"lokal":"Angio",              "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 2                },
-      {"lokal":"Away",               "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                },
-      {"lokal":"Baay Ext",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 1               },
-      {"lokal":"Bacabac",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 9                 },
-      {"lokal":"Balococ",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 1                },
-      {"lokal":"Baloling",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 178                 },
-      {"lokal":"Banaybayan Ext",     "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                       }, 
-      {"lokal":"Bateng",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                   }, 
-      {"lokal":"Binday",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 3                         }, 
-      {"lokal":"Binmaley",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 1                       }, 
-      {"lokal":"Bisbisocol",         "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                 }, 
-      {"lokal":"Bolo",               "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                 }, 
-      {"lokal":"Bonuan",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 20                 }, 
-      {"lokal":"Bugallon",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 310                         }, 
-      {"lokal":"Calasiao",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 103                         }, 
-      {"lokal":"Calit",              "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 5                        }, 
-      {"lokal":"Calmay",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                    }, 
-      {"lokal":"Carael",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 11                        }, 
-      {"lokal":"Colisao",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 3                           }, 
-      {"lokal":"Dagupan City",       "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                              }, 
-      {"lokal":"David",              "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 281                       }, 
-      {"lokal":"Domalandan",         "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                    }, 
-      {"lokal":"Dulag",              "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 275                     }, 
-      {"lokal":"Garcia",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 3                     }, 
-      {"lokal":"Hacienda",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                    }, 
-      {"lokal":"Haway",              "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 5                     }, 
-      {"lokal":"Inmalog",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                        }, 
-      {"lokal":"Laguit Centro",      "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 25                    }, 
-      {"lokal":"Leet",               "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                    }, 
-      {"lokal":"Lingayen",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 11                   }, 
-      {"lokal":"Lobong",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 1                   },
-      {"lokal":"Longos Calasiao EXT",    "duration":"30:0",  "link":"", "image":"22.jpg",    "views": 0                     },
-      {"lokal":"LONGOS SAN FABIAN EXT",  "duration":"30:0",  "link":"", "image":"22.jpg",    "views": 0                      },
-      {"lokal":"Luyan",              "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 1                       }, 
-      {"lokal":"Maambal",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                    }, 
-      {"lokal":"Maasin Ext",         "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                    },
-      {"lokal":"Mabilao",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                   },
-      {"lokal":"Magtaking",          "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 1                   },
-      {"lokal":"Malindong Ext",      "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                    },
-      {"lokal":"Mamalingling",       "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 4                   }, 
-      {"lokal":"Manaoag",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 1                                           }, 
-      {"lokal":"Manaoag Dos",        "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 19                     }, 
-      {"lokal":"Mangaldan",          "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 3                    }, 
-      {"lokal":"Mapandan",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 275                                                }, 
-      {"lokal":"Matalava",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 10                   }, 
-      {"lokal":"Niñoy",              "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 3                                }, 
-      {"lokal":"Palua Ext",          "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                     }, 
-      {"lokal":"Pangapisan North",   "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 8                                        }, 
-      {"lokal":"Pugaro",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 2                        }, 
-      {"lokal":"Quetegan",           "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 8                          }, 
-      {"lokal":"Rosario",            "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 6                       }, 
-      {"lokal":"Salomague",          "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 14                         }, 
-      {"lokal":"San Fabian",         "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 3                       }, 
-      {"lokal":"San Jacinto",        "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 18                                            },
-      {"lokal":"San Ramon Ext",      "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                        }, 
-      {"lokal":"Talibaew Ext",       "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                        }, 
-      {"lokal":"Tulong",             "duration":"30:0",  "link":"", "image":"22.jpg",        "views": 0                        } 
-        
-
-        
-      ] 
-        
-        
-        
-        
-        
+      {"lokal":"Lingayen Pangasinan",              "duration":"00:1", "link":"https://rey5209.github.io/inc2/", "dataSource":"viewTotal", "image":"22.jpg", "views": 0},
+      {"lokal":"Alaminos City Pangasinan",         "duration":"00:5", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Urdaneta City Pangasinan",         "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"San Carlos City Pangasinan",       "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Rosales Pangasinan",               "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"La Union",                         "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Ilocos Sur",                       "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Batac City Ilocos Nortes",         "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Laoag City Ilocos Norte",          "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Benguet",                          "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Mountain Province",                "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Abra",                             "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Candon City Ilocos Sur",           "duration":"30:0", "link":"", "image":"22.jpg", "views": 0} 
+      ]  
     },
     {
       "tittle" : "CFO Today | 5:30 - 6:00 pm | FEBRUARY 25,2022 ",
@@ -105,5 +51,3 @@
 
   ]
 }
-
- 
