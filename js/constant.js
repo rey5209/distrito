@@ -1,4 +1,3 @@
-
 export const firebaseConfig = {
   apiKey: "AIzaSyA35D1SwQdAPOAp-wxRYsezWQI7rvIPQAY",
   authDomain: "counting-system.firebaseapp.com",
@@ -9,21 +8,21 @@ export const firebaseConfig = {
 };
 
 //firabase base path
-export const BASE_PATH = 'distrito-'
+export const BASE_PATH = 'distrito-' 
 
 //firebase list of items
-export const arr =[
-    "Lingayen Pangasinan",
-    "Alaminos City Pangasinan",
-    "Urdaneta City Pangasinan",
-    "San Carlos City Pangasinan",
-    "Rosales Pangasinan",
-    "La Union",
-    "Ilocos Sur",
-    "Batac City Ilocos Nortes",
-    "Laoag City Ilocos Norte",
-    "Benguet",
-    "Mountain Province",
-    "Abra",
-    "Candon City Ilocos Sur"
-        ] ;
+export const arr = [
+    "LINGAYEN PANGASINAN",
+    "ALAMINOS CITY PANGASINAN",
+    "URDANETA CITY PANGASINAN",
+    "SAN CARLOS CITY PANGASINAN",
+    "ROSALES PANGASINAN",
+    "LA UNION",
+    "ILOCOS SUR",
+    "BATAC CITY ILOCOS NORTES",
+    "LAOAG CITY ILOCOS NORTE",
+    "BENGUET",
+    "MOUNTAIN PROVINCE",
+    "ABRA",
+    "CANDON CITY ILOCOS SUR"
+];

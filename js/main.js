@@ -115,7 +115,7 @@ $(document).ready(function () {
             // var tittle = item.tittle;
             $('.append_pages').append(
               `
-        <table name="${item.tittle}" class="table table-striped table-hover table-paging table-page-${count_page}" id="maintable${count_page}"> 
+        <table name="${item.tittle}" class="table table-light table-striped table-hover table-paging table-page-${count_page}" id="maintable${count_page}"> 
             <thead>
               <tr > 
                 <th  class="lokals-item d-flex justify-content-between align-items-center"> 
@@ -205,7 +205,7 @@ $(document).ready(function () {
             if (top) {
 
               $('.append_tops').append(`
-            <table   class="table table-striped table-hover top_pages_table top_pages-tables-${count_page}"  id="totaltable${count_page}">
+            <table   class="table table-striped table-light table-hover top_pages_table top_pages-tables-${count_page}"  id="totaltable${count_page}">
                 <thead>
                   <tr > 
                     <th  class="lokals-item d-flex justify-content-between align-items-center"> 
