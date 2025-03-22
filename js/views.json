@@ -14,7 +14,7 @@
     "viewDataType": "firebase",
     "viewData" : [
       {"lokal":"Lingayen Pangasinan",              "duration":"00:1", "link":"https://rey5209.github.io/inc2/", "dataSource":"viewTotal", "image":"22.jpg", "views": 0},
-      {"lokal":"Alaminos City Pangasinan",         "duration":"00:5", "link":"", "image":"22.jpg", "views": 0},
+      {"lokal":"Alaminos City Pangasinan",         "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
       {"lokal":"Urdaneta City Pangasinan",         "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
       {"lokal":"San Carlos City Pangasinan",       "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
       {"lokal":"Rosales Pangasinan",               "duration":"30:0", "link":"", "image":"22.jpg", "views": 0},
